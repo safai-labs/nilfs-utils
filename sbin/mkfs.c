@@ -9,7 +9,7 @@
  * Credits:
  *    Hisashi Hifumi,
  *    Amagai Yoshiji,
- *    Ryusuke Konishi <konishi.ryusuke@lab.ntt.co.jp>.
+ *    Ryusuke Konishi <konishi.ryusuke@gmail.com>.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -454,7 +454,7 @@ static unsigned long nilfs_min_nsegments(struct nilfs_disk_info *di, long rp)
 {
 	/* Minimum number of full segments */
 	return max_t(unsigned long,
-		     (rp * di->nsegments - 1) / 100 + 1, NILFS_MIN_NRSVSEGS) +
+		     (rp * di->nsegments + 99) / 100, NILFS_MIN_NRSVSEGS) +
 		max_t(unsigned long, nr_initial_segments, NILFS_MIN_NUSERSEGS);
 }
 
@@ -500,7 +500,8 @@ static void init_disk_layout(struct nilfs_disk_info *di, int fd,
 		     "       device size=%llu bytes, required size=%llu bytes.\n"
 		     "       Please enlarge the device, or shorten segments with -B option.",
 		     dev_size,
-		     (unsigned long long)segment_size * min_nsegments);
+		     (unsigned long long)segment_size * min_nsegments +
+		     blocksize);
 	di->nseginfo = 0;
 }
 

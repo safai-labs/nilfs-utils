@@ -1,7 +1,7 @@
 PRIMARY AUTHORS AND MAJOR CONTRIBUTORS TO NILFS-UTILS
 
 Authors who worked or are working at labs of NTT Corporation:
-* Ryusuke Konishi <konishi.ryusuke@lab.ntt.co.jp>
+* Ryusuke Konishi <konishi.ryusuke@gmail.com>
 - Primary maintainer (02/2008-Present)
 - Implemented mkfs.nilfs2, mount.nilfs2
 - Enhanced snapshot/checkpoint tools, cleanerd, and libraries.
@@ -22,7 +22,7 @@ Authors who worked or are working at labs of NTT Corporation:
 - Enhanced lscp to allow specifying range of checkpoints
 - Enhanced lssu to allow specifying range of segments
 
-* Seiji Kihara <kihara.seiji@lab.ntt.co.jp>
+* Seiji Kihara
 - Maintainer of RPM packages of nilfs-utils and nilfs2 standalone modules
 - Initial development
 
@@ -41,6 +41,9 @@ Feb 7, 2014: shutcut for certain GC operations
     - add NILFS_IOCTL_SET_SUINFO ioctl support
     - add optimized version of nilfs_xreclaim_segment
     - and so forth.
+
+* Andy Weidenbaum <archbaum@gmail.com>
+Jan 12, 2019: include <fcntl.h> for musl
 
 * Dan McGee <dan@archlinux.org>
 Dec 21, 2011: bunch of fixes and cleanups including:
@@ -75,6 +78,12 @@ November 9, 2009: expose struct nilfs_btree_node
 September 3, 2010: enhanced super block read/write routines
 September 3, 2010: implemented nilfs-tune
 November 19, 2010: replaced crc32 implementation
+
+* Kurt Van Dijck <dev.kurt@vandijck-laurijssen.be>
+January 3, 2017: fix some build issues
+    - libmount, libblkid: fix order of autoconf probing
+    - mount.nilfs: drop include rpc/types.h
+    - nilfs-utils: use _POSIX_MAX_INPUT
 
 * Matteo Frigo <athena@fftw.org>
 September 11, 2010: compare device number for mount check
